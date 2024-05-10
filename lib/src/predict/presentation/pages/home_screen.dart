@@ -260,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       hintText: AppStrings.pointsEarned,
                       controller: pointsEarnedController,
                       textAction: TextInputAction.done,
-            
+
                       // focusNode: pointsEarnedFocusNode,
                       // onEditingComplete: () {
                       //   FocusScope.of(context).unfocus();
@@ -286,7 +286,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               return AlertDialog(
                                 title: const Text('Prediction Result'),
                                 content: Text(
-                                  'The prediction is ${state.resultModel.prob}',
+                                  state.resultModel.willExit
+                                      ? 'The Customer will exit with prob ${state.resultModel.prob.toStringAsPrecision(5)}'
+                                      : 'The Customer won\'t exit with prob ${state.resultModel.prob.toStringAsPrecision(5)}',
                                 ),
                                 actions: [
                                   CustomRoundedButton(
@@ -323,7 +325,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       builder: (context, state) {
                         if (state is PredictLoading) {
-                          return const Center(child: CircularProgressIndicator());
+                          return const Center(
+                              child: CircularProgressIndicator());
                         } else {
                           return CustomRoundedButton(
                             buttonText: AppStrings.predict,
@@ -340,7 +343,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           creditScoreController.text,
                                         ),
                                         age: int.parse(ageController.text),
-                                        tenure: int.parse(tenureController.text),
+                                        tenure:
+                                            int.parse(tenureController.text),
                                         balance: int.parse(
                                           accountBalanceController.text,
                                         ),
@@ -383,11 +387,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ? 1
                                                 : 0,
                                         geographyFrance:
-                                            CacheHelper.getLocation() == 'France'
+                                            CacheHelper.getLocation() ==
+                                                    'France'
                                                 ? 1
                                                 : 0,
                                         geographyGermany:
-                                            CacheHelper.getLocation() == 'Germany'
+                                            CacheHelper.getLocation() ==
+                                                    'Germany'
                                                 ? 1
                                                 : 0,
                                         geographySpain:
@@ -400,8 +406,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ? 1
                                             : 0,
                                         isActiveMember:
-                                            CacheHelper.getStatusList().contains(
-                                                    AppStrings.isActiveMember)
+                                            CacheHelper.getStatusList()
+                                                    .contains(AppStrings
+                                                        .isActiveMember)
                                                 ? 1
                                                 : 0,
                                       ),

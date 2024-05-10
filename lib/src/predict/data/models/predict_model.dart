@@ -1,26 +1,27 @@
 import 'package:ml_project/src/predict/domain/entities/predict_entity.dart';
 
 class PredictModel extends PredictEntity {
-  PredictModel(
-      {required super.creditScore,
-      required super.age,
-      required super.tenure,
-      required super.balance,
-      required super.numOfProducts,
-      required super.hasCrCard,
-      required super.isActiveMember,
-      required super.estimatedSalary,
-      required super.satisfactionScore,
-      required super.pointEarned,
-      required super.geographyFrance,
-      required super.geographyGermany,
-      required super.geographySpain,
-      required super.genderFemale,
-      required super.genderMale,
-      required super.cardTypeDiamond,
-      required super.cardTypeGold,
-      required super.cardTypePlatinum,
-      required super.cardTypeSilver});
+  PredictModel({
+    required super.creditScore,
+    required super.age,
+    required super.tenure,
+    required super.balance,
+    required super.numOfProducts,
+    required super.hasCrCard,
+    required super.isActiveMember,
+    required super.estimatedSalary,
+    required super.satisfactionScore,
+    required super.pointEarned,
+    required super.geographyFrance,
+    required super.geographyGermany,
+    required super.geographySpain,
+    required super.genderFemale,
+    required super.genderMale,
+    required super.cardTypeDiamond,
+    required super.cardTypeGold,
+    required super.cardTypePlatinum,
+    required super.cardTypeSilver,
+  });
 
   factory PredictModel.fromJson(Map<String, dynamic> json) {
     return PredictModel(
