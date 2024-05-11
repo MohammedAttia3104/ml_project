@@ -21,63 +21,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final TextEditingController creditScoreController;
   late final TextEditingController ageController;
-  late final TextEditingController tenureController;
   late final TextEditingController accountBalanceController;
-  late final TextEditingController numOfProductsController;
   late final TextEditingController estimatedSalaryController;
-  late final TextEditingController satisfactionScoreController;
-  late final TextEditingController pointsEarnedController;
-  late final FocusNode creditScoreFocusNode;
   late final FocusNode ageFocusNode;
-  late final FocusNode tenureFocusNode;
   late final FocusNode accountBalanceFocusNode;
-  late final FocusNode numOfProductsFocusNode;
   late final FocusNode estimatedSalaryFocusNode;
-  late final FocusNode satisfactionScoreFocusNode;
-  late final FocusNode pointsEarnedFocusNode;
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    creditScoreController = TextEditingController();
     ageController = TextEditingController();
-    tenureController = TextEditingController();
     accountBalanceController = TextEditingController();
-    numOfProductsController = TextEditingController();
     estimatedSalaryController = TextEditingController();
-    satisfactionScoreController = TextEditingController();
-    pointsEarnedController = TextEditingController();
-    creditScoreFocusNode = FocusNode();
     ageFocusNode = FocusNode();
-    tenureFocusNode = FocusNode();
     accountBalanceFocusNode = FocusNode();
-    numOfProductsFocusNode = FocusNode();
     estimatedSalaryFocusNode = FocusNode();
-    satisfactionScoreFocusNode = FocusNode();
-    pointsEarnedFocusNode = FocusNode();
   }
 
   @override
   void dispose() {
-    creditScoreController.dispose();
     ageController.dispose();
-    tenureController.dispose();
     accountBalanceController.dispose();
-    numOfProductsController.dispose();
     estimatedSalaryController.dispose();
-    satisfactionScoreController.dispose();
-    pointsEarnedController.dispose();
-    creditScoreFocusNode.dispose();
     ageFocusNode.dispose();
-    tenureFocusNode.dispose();
     accountBalanceFocusNode.dispose();
-    numOfProductsFocusNode.dispose();
     estimatedSalaryFocusNode.dispose();
-    satisfactionScoreFocusNode.dispose();
-    pointsEarnedFocusNode.dispose();
     super.dispose();
   }
 
@@ -112,32 +82,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     gapH(20),
                     CustomTextFormField(
-                      hintText: AppStrings.creditScore,
-                      controller: creditScoreController,
-                      focusNode: creditScoreFocusNode,
-                      onEditingComplete: () {
-                        FocusScope.of(context).requestFocus(ageFocusNode);
-                      },
-                      validate: (value) {},
-                      textAction: TextInputAction.next,
-                      textOnChanged: (value) {
-                        // int? creditScore = int.tryParse(value);
-                        // if (creditScore == null ||
-                        //     creditScore < 300 ||
-                        //     creditScore > 850) {
-                        //   log('Invalid credit score');
-                        // } else {
-                        //   log('Valid credit score: $creditScore');
-                        // }
-                      },
-                    ),
-                    gapH(14),
-                    CustomTextFormField(
                       hintText: AppStrings.age,
                       controller: ageController,
                       focusNode: ageFocusNode,
                       onEditingComplete: () {
-                        FocusScope.of(context).requestFocus(tenureFocusNode);
+                        FocusScope.of(context)
+                            .requestFocus(accountBalanceFocusNode);
                       },
                       textAction: TextInputAction.next,
                       validate: (value) {
@@ -160,31 +110,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     gapH(14),
                     CustomTextFormField(
-                      hintText: AppStrings.tenure,
-                      controller: tenureController,
-                      focusNode: tenureFocusNode,
-                      textAction: TextInputAction.next,
-                      onEditingComplete: () {
-                        FocusScope.of(context)
-                            .requestFocus(accountBalanceFocusNode);
-                      },
-                      textOnChanged: (value) {
-                        int? tenure = int.tryParse(value);
-                        if (tenure == null || tenure < 0 || tenure > 10) {
-                          log('Invalid tenure');
-                        } else {
-                          log('Valid tenure: $tenure');
-                        }
-                      },
-                    ),
-                    gapH(14),
-                    CustomTextFormField(
                       hintText: AppStrings.accountBalance,
                       controller: accountBalanceController,
                       focusNode: accountBalanceFocusNode,
                       onEditingComplete: () {
                         FocusScope.of(context)
-                            .requestFocus(numOfProductsFocusNode);
+                            .requestFocus(estimatedSalaryFocusNode);
                       },
                       textAction: TextInputAction.next,
                       textOnChanged: (value) {
@@ -198,33 +129,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     gapH(14),
                     CustomTextFormField(
-                      hintText: AppStrings.numberOfProducts,
-                      controller: numOfProductsController,
-                      focusNode: numOfProductsFocusNode,
-                      textAction: TextInputAction.next,
-                      onEditingComplete: () {
-                        FocusScope.of(context)
-                            .requestFocus(estimatedSalaryFocusNode);
-                      },
-                      textOnChanged: (value) {
-                        int? numOfProducts = int.tryParse(value);
-                        if (numOfProducts == null || numOfProducts < 1) {
-                          log('Invalid number of products');
-                        } else {
-                          log('Valid number of products: $numOfProducts');
-                        }
-                      },
-                    ),
-                    gapH(14),
-                    CustomTextFormField(
                       hintText: AppStrings.estimatedSalary,
                       controller: estimatedSalaryController,
                       focusNode: estimatedSalaryFocusNode,
                       textAction: TextInputAction.next,
-                      onEditingComplete: () {
-                        FocusScope.of(context)
-                            .requestFocus(satisfactionScoreFocusNode);
-                      },
+                      onEditingComplete: () {},
                       textOnChanged: (value) {
                         double? estimatedSalary = double.tryParse(value);
                         if (estimatedSalary == null || estimatedSalary < 0) {
@@ -235,46 +144,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                     gapH(14),
-                    CustomTextFormField(
-                      hintText: AppStrings.satisfactionScore,
-                      controller: satisfactionScoreController,
-                      focusNode: satisfactionScoreFocusNode,
-                      textAction: TextInputAction.next,
-                      onEditingComplete: () {
-                        FocusScope.of(context)
-                            .requestFocus(pointsEarnedFocusNode);
-                      },
-                      textOnChanged: (value) {
-                        int? satisfactionScore = int.tryParse(value);
-                        if (satisfactionScore == null ||
-                            satisfactionScore < 1 ||
-                            satisfactionScore > 10) {
-                          log('Invalid satisfaction score');
-                        } else {
-                          log('Valid satisfaction score: $satisfactionScore');
-                        }
-                      },
-                    ),
-                    gapH(14),
-                    CustomTextFormField(
-                      hintText: AppStrings.pointsEarned,
-                      controller: pointsEarnedController,
-                      textAction: TextInputAction.done,
-
-                      // focusNode: pointsEarnedFocusNode,
-                      // onEditingComplete: () {
-                      //   FocusScope.of(context).unfocus();
-                      // },
-                      textOnChanged: (value) {
-                        int? pointsEarned = int.tryParse(value);
-                        if (pointsEarned == null || pointsEarned < 0) {
-                          log('Invalid points earned');
-                        } else {
-                          log('Valid points earned: $pointsEarned');
-                        }
-                      },
-                    ),
-                    gapH(24),
                     const CustomDropDownButton(),
                     gapH(24),
                     BlocConsumer<PredictCubit, PredictState>(
@@ -339,25 +208,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 log('***${CacheHelper.getCreditCardType() == 'SILVER' ? 1 : 0}');
                                 context.read<PredictCubit>().predict(
                                       PredictModel(
-                                        creditScore: int.parse(
-                                          creditScoreController.text,
-                                        ),
                                         age: int.parse(ageController.text),
-                                        tenure:
-                                            int.parse(tenureController.text),
                                         balance: int.parse(
                                           accountBalanceController.text,
                                         ),
-                                        numOfProducts: int.parse(
-                                            numOfProductsController.text),
                                         estimatedSalary: int.parse(
                                             estimatedSalaryController.text),
-                                        satisfactionScore: int.parse(
-                                          satisfactionScoreController.text,
-                                        ),
-                                        pointEarned: int.parse(
-                                          pointsEarnedController.text,
-                                        ),
                                         cardTypeSilver:
                                             CacheHelper.getCreditCardType() ==
                                                     'SILVER'

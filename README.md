@@ -1,16 +1,31 @@
-# ml_project
+# ML Project
 
-A new Flutter project.
+This project is a machine learning application developed using Dart and Flutter. It is designed to predict certain outcomes based on a variety of input parameters.
+
+## Features
+
+- Customizable dropdown buttons for selecting various parameters.
+- Text fields for inputting numerical data.
+- Predictive model that takes the input data and predicts an outcome.
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get a local copy up and running, follow these simple steps:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository
+```
+git clone https://github.com/MohammedAttia3104/ml_project.git
+```
+2. Navigate to the project directory
+```
+cd ml_project
+```
+3. Install the dependencies
+```
+flutter pub get
+```
+4. Run the app
+```
+flutter run
+```
